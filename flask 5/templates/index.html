@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Message portal</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	<h1>MESSAGE PORTAL</h1>
+	<hr>
+	<form method="POST">
+		<label for="message":>New message:</label>
+		<input type="text" name="message" id="message"><br>
+		<label for="author":>Author:</label>
+		<input type="text" name="author" id="author"><br>
+		<input type="submit" value="Add Message">
+		<h2>Your messages</h2>
+		<ul>
+		
+		{% if not messages %}
+			<h2>You dont have msgs.</h2>
+		{% else %}
+			{% for message in messages %}
+			<li>{{ message["message"] }}, Author: {{ message["Author"] }}</li>
+			{% endfor %}
+		{% endif %}
+	</form>
+</body>
+</html>
